@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { deleteUser } from '../../pages/api/users';
 

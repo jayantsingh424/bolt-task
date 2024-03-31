@@ -5,7 +5,7 @@ import AddUserForm from './forms/AddUserForm';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
-  const [showAddUserModal, setShowAddUserModal] = useState<boolean>(false); // State for modal visibility
+  const [showAddUserModal, setShowAddUserModal] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {

@@ -3,7 +3,7 @@ import Input from '../UI/Input';
 import { UserData, updateUser } from '../../pages/api/users';
 
 interface EditUserFormProps {
-    id: number; // Ensure that id is always provided and of type number
+    id: number;
     first_name: UserData['first_name'];
     last_name: UserData['last_name'];
     email: UserData['email'];
@@ -11,9 +11,9 @@ interface EditUserFormProps {
 
 const EditUserForm: React.FC<EditUserFormProps> = ({ id, first_name, last_name, email }) => {
     const [updatedUser, setUpdatedUser] = useState({
-        email: email || '', // Initialize with the provided email or an empty string
-        first_name: first_name || '', // Initialize with the provided first name or an empty string
-        last_name: last_name || '', // Initialize with the provided last name or an empty string
+        email: email || '',
+        first_name: first_name || '',
+        last_name: last_name || '',
     });
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

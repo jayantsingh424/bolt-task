@@ -60,7 +60,7 @@ export default function IndexPage() {
                 {users.map(user => (
                     <UserCard
                     key={user.id}
-                    id={user.id || 0} // Provide a default value for id if it's undefined
+                    id={user.id || 0}
                     first_name={user.first_name}
                     last_name={user.last_name}
                     email={user.email}
