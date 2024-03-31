@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
-import { handleAddUser } from '@/pages/api/users';
+import { UserData, handleAddUser } from '@/pages/api/users';
 
 interface AddUserFormProps {
   onAddUser: () => void;
 }
 
-interface NewUserData {
-  id?: number;
-  email: string;
-  first_name: string;
-  last_name: string;
-  avatar?: string;
-}
-
 const AddUserForm: React.FC<AddUserFormProps> = ({ onAddUser }) => {
-  const [newUser, setNewUser] = useState<NewUserData>({
+  const [newUser, setNewUser] = useState<UserData>({
     email: '',
     first_name: '',
     last_name: '',

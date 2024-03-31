@@ -1,23 +1,20 @@
-// EditUserForm.tsx
-
 import React, { useState } from 'react';
 import Input from '../UI/Input';
-import { updateUser } from '../../pages/api/users';
-
-interface User {
-    id: number;
-    email: string;
-    first_name: string;
-    last_name: string;
-    avatar: string;
-}
+import { UserData, updateUser } from '../../pages/api/users';
 
 interface EditUserFormProps {
-    user: User;
+    id: number; // Ensure that id is always provided and of type number
+    first_name: UserData['first_name'];
+    last_name: UserData['last_name'];
+    email: UserData['email'];
 }
 
-const EditUserForm: React.FC<EditUserFormProps> = ({ user }) => {
-    const [updatedUser, setUpdatedUser] = useState<User>(user);
+const EditUserForm: React.FC<EditUserFormProps> = ({ id, first_name, last_name, email }) => {
+    const [updatedUser, setUpdatedUser] = useState({
+        email: email || '', // Initialize with the provided email or an empty string
+        first_name: first_name || '', // Initialize with the provided first name or an empty string
+        last_name: last_name || '', // Initialize with the provided last name or an empty string
+    });
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
@@ -30,7 +27,7 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ user }) => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
-            await updateUser(updatedUser.id, updatedUser);
+            await updateUser(id, updatedUser);
         } catch (error) {
             console.error('Error updating user:', error);
         }

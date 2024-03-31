@@ -58,7 +58,14 @@ export default function IndexPage() {
             <Header />
             <div className="grid grid-cols-4 gap-4 mt-[80px] pt-[40px] font-mono text-white text-sm text-center font-bold leading-6 bg-stripes-fuchsia rounded-lg">
                 {users.map(user => (
-                    <UserCard key={user.id} user={user} />
+                    <UserCard
+                    key={user.id}
+                    id={user.id || 0} // Provide a default value for id if it's undefined
+                    first_name={user.first_name}
+                    last_name={user.last_name}
+                    email={user.email}
+                    avatar={user.avatar}
+                  />
                 ))}
                 {loading && <p>Loading...</p>}
             </div>
