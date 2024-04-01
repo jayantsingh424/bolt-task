@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Modal from "./modal/Modal";
+import Link from "next/link"; // Import Link from next/link
 import Image from "next/image";
+import Modal from "./modal/Modal";
 import EditUserForm from "./forms/editUserForm";
 import DeleteUserForm from "./forms/deleteUserForm";
 import { UserData } from "@/pages/api/users";
@@ -29,19 +30,21 @@ const UserCard: React.FC<UserCardProps> = ({ id, first_name, last_name, email, a
   return (
     <div className="w-full max-w-md rounded-lg border border-gray-200 bg-white p-5 shadow">
       <div className="user-details">
-        <div className="user-image">
-          <Image
-            src={avatarSrc}
-            alt={`${first_name} ${last_name}`}
-            width={100}
-            height={100}
-            className="mx-auto rounded-full mb-2 border-4 border-blue p-1"
-          />
-        </div>
-        <p className="text-lg font-semibold text-blue-900 mb-2">
-          {first_name} {last_name}
-        </p>
-        <p className="text-gray-600 mb-4">Email: {email}</p>
+        <Link href={`/user/${id}`}> {/* Link to the user details page */}
+            <div className="user-image">
+              <Image
+                src={avatarSrc}
+                alt={`${first_name} ${last_name}`}
+                width={100}
+                height={100}
+                className="mx-auto rounded-full mb-2 border-4 border-blue p-1"
+              />
+            </div>
+            <p className="text-lg font-semibold text-blue-900 mb-2">
+              {first_name} {last_name}
+            </p>
+            <p className="text-gray-600 mb-4">Email: {email}</p>
+        </Link>
       </div>
       <button
         onClick={openEditModal}
@@ -61,9 +64,7 @@ const UserCard: React.FC<UserCardProps> = ({ id, first_name, last_name, email, a
       </Modal>
 
       <Modal isOpen={isDeleteOpen} onClose={closeDeleteModal}>
-        <DeleteUserForm
-          userId={id}
-        />
+        <DeleteUserForm userId={id} />
       </Modal>
     </div>
   );

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Modal from './modal/Modal';
-import AddUserForm from './forms/AddUserForm';
+import Modal from '../modal/Modal';
+import AddUserForm from '../forms/AddUserForm';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);

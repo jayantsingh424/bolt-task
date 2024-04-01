@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Header from '../components/Header'; 
 import UserCard from '../components/UserCard';
 import { fetchUsers } from './api/users';
 import { UserData } from './api/users';
@@ -55,8 +54,7 @@ export default function IndexPage() {
 
     return (
         <div>
-            <Header />
-            <div className="grid grid-cols-4 gap-4 mt-[80px] pt-[40px] font-mono text-white text-sm text-center font-bold leading-6 bg-stripes-fuchsia rounded-lg">
+            <div className="grid grid-cols-4 gap-4 text-white text-sm text-center font-bold leading-6 bg-stripes-fuchsia rounded-lg">
                 {users.map(user => (
                     <UserCard
                     key={user.id}

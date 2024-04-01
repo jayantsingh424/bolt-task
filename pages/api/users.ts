@@ -33,6 +33,16 @@ export const fetchUsers = async (page: number = 1, perPage: number = 20): Promis
   }
 };
 
+export const fetchUserById = async (userId: string): Promise<UserData> => {
+  try {
+    const response = await axios.get<UserData>(`${API_BASE_URL}/users/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching user by ID:', error);
+    throw error;
+  }
+};
+
 export const handleAddUser = async (newUser: UserData) => {
   try {
     const response = await axios.post(`${API_BASE_URL}/users`, newUser);
