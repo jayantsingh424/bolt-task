@@ -54,16 +54,16 @@ export default function IndexPage() {
 
     return (
         <div>
-            <div className="grid grid-cols-4 gap-4 text-white text-sm text-center font-bold leading-6 bg-stripes-fuchsia rounded-lg">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 bg-stripes-fuchsia rounded-lg">
                 {users.map(user => (
                     <UserCard
-                    key={user.id}
-                    id={user.id || 0}
-                    first_name={user.first_name}
-                    last_name={user.last_name}
-                    email={user.email}
-                    avatar={user.avatar}
-                  />
+                        key={user.id}
+                        id={user.id || 0}
+                        first_name={user.first_name}
+                        last_name={user.last_name}
+                        email={user.email}
+                        avatar={user.avatar}
+                    />
                 ))}
                 {loading && <p>Loading...</p>}
             </div>
